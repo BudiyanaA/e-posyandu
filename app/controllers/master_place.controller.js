@@ -1,5 +1,5 @@
 const db = require("../models");
-const Posyandu = db.posyandus;
+const Master_place = db.master_places;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Posyandu
@@ -13,14 +13,12 @@ exports.create = (req, res) => {
   }
 
    // Create a Posyandu
-   const posyandu = {
+   const master_place = {
     name: req.body.name,
-    rw: req.body.rw,
-    village_id: req.body.village_id ? req.body.village_id : false
   };
 
   // Save Posyandu in the database
-  Posyandu.create(posyandu)
+  Master_place.create(master_place)
     .then(data => {
       res.send(data);
     })
@@ -37,7 +35,7 @@ exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
   
-    Posyandu.findAll({ where: condition })
+    Master_place.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -53,7 +51,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Posyandu.findByPk(id)
+    Master_place.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
@@ -74,7 +72,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Posyandu.update(req.body, {
+    Master_place.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -99,7 +97,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Posyandu.destroy({
+    Master_place.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -122,7 +120,7 @@ exports.delete = (req, res) => {
 
 // Delete all Posyandu from the database.
 exports.deleteAll = (req, res) => {
-    Posyandu.destroy({
+    Master_place.destroy({
         where: {},
         truncate: false
       })
@@ -138,15 +136,15 @@ exports.deleteAll = (req, res) => {
 };
 
 // Find all published Posyandus
-exports.findAllPublished = (req, res) => {
-    Posyandu.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving posyandus."
-      });
-    });
-};
+// exports.findAllPublished = (req, res) => {
+//     Master_place.findAll({ where: { published: true } })
+//     .then(data => {
+//       res.send(data);
+//     })
+//     .catch(err => {
+//       res.status(500).send({
+//         message:
+//           err.message || "Some error occurred while retrieving posyandus."
+//       });
+//     });
+// };

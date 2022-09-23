@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Master_place = sequelize.define("master place", {
+    const Master_place = sequelize.define("master_place", {
       name: {
         type: Sequelize.STRING
       }    

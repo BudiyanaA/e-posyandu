@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
-    const Master_birht_condition = sequelize.define("master birht condition", {
+    const Master_birth_condition = sequelize.define("master_birth_condition", {
       name: {
         type: Sequelize.STRING
       }
     });
   
-    return Master_birht_condition;
+    return Master_birth_condition;
   };

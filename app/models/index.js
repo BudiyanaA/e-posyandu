@@ -20,13 +20,17 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.posyandus = require("./posyandu.model.js")(sequelize, Sequelize);
-db.user = require("./user.model.js")(sequelize, Sequelize);
-db.mom = require("./mom.model.js")(sequelize, Sequelize);
-db.dad = require("./dad.model.js")(sequelize, Sequelize);
-db.child = require("./child.model.js")(sequelize, Sequelize);
-db.birth_record = require("./birth_record.model.js")(sequelize, Sequelize);
-db.master_birth_condition = require("./master_birth_condition.model.js")(sequelize, Sequelize);
-db.master_vaksin = require("./master_vaksin.model.js")(sequelize, Sequelize);
-db.master_place = require("./master_place.model.js")(sequelize, Sequelize);
-db.immunization = require("./immunization.model.js")(sequelize, Sequelize);
+db.users = require("./user.model.js")(sequelize, Sequelize);
+db.moms = require("./mom.model.js")(sequelize, Sequelize);
+db.dads = require("./dad.model.js")(sequelize, Sequelize);
+db.childs = require("./child.model.js")(sequelize, Sequelize);
+db.birth_records = require("./birth_record.model.js")(sequelize, Sequelize);
+db.master_birth_conditions = require("./master_birth_condition.model.js")(sequelize, Sequelize);
+db.master_vaksins = require("./master_vaksin.model.js")(sequelize, Sequelize);
+db.master_places= require("./master_place.model.js")(sequelize, Sequelize);
+db.immunizations = require("./immunization.model.js")(sequelize, Sequelize);
+db.kms = require("./kms.model.js")(sequelize, Sequelize);
+
+
+
 module.exports = db;

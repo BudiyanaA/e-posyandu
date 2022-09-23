@@ -1,5 +1,5 @@
 const db = require("../models");
-const Posyandu = db.posyandus;
+const Master_birth_condition = db.master_birth_conditions;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Posyandu
@@ -13,21 +13,19 @@ exports.create = (req, res) => {
   }
 
    // Create a Posyandu
-   const posyandu = {
-    name: req.body.name,
-    rw: req.body.rw,
-    village_id: req.body.village_id ? req.body.village_id : false
+   const master_birth_condition = {
+    name: req.body.name
   };
 
   // Save Posyandu in the database
-  Posyandu.create(posyandu)
+  Master_birth_condition.create(master_birth_condition)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Posyandu."
+          err.message || "Some error occurred while creating the master birth conditions."
       });
     });
 };
@@ -37,7 +35,7 @@ exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
   
-    Posyandu.findAll({ where: condition })
+    Master_birth_condition.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -53,19 +51,19 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Posyandu.findByPk(id)
+    Master_birth_condition.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Posyandu with id=${id}.`
+            message: `Cannot find master_birth_condition with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Posyandu with id=" + id
+          message: "Error retrieving master_birth_condition with id=" + id
         });
       });
 };
@@ -74,23 +72,23 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Posyandu.update(req.body, {
+    Master_birth_condition.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Posyandu was updated successfully."
+            message: "Master birth condition was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Posyandu with id=${id}. Maybe Posyandu was not found or req.body is empty!`
+            message: `Cannot update Master irth conditions with id=${id}. Maybe Master birth conditions was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Posyandu with id=" + id
+          message: "Error updating Master birth conditions with id=" + id
         });
       });
 };
@@ -99,17 +97,17 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Posyandu.destroy({
+    Master_birth_condition.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Posyandu was deleted successfully!"
+            message: "Master birth  conditions was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Posyandu with id=${id}. Maybe Posyandu was not found!`
+            message: `Cannot delete Master birth conditions with id=${id}. Maybe Master birth condition was not found!`
           });
         }
       })
@@ -122,7 +120,7 @@ exports.delete = (req, res) => {
 
 // Delete all Posyandu from the database.
 exports.deleteAll = (req, res) => {
-    Posyandu.destroy({
+    master_birth_condition.destroy({
         where: {},
         truncate: false
       })
@@ -138,15 +136,15 @@ exports.deleteAll = (req, res) => {
 };
 
 // Find all published Posyandus
-exports.findAllPublished = (req, res) => {
-    Posyandu.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving posyandus."
-      });
-    });
-};
+// exports.findAllPublished = (req, res) => {
+//     Master_birth_condition.findAll({ where: { published: true } })
+//     .then(data => {
+//       res.send(data);
+//     })
+//     .catch(err => {
+//       res.status(500).send({
+//         message:
+//           err.message || "Some error occurred while retrieving posyandus."
+//       });
+//     });
+// };
