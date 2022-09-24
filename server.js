@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
 require("./app/routes/posyandu.routes")(app);
 require("./app/routes/master_birth_condition.routes")(app);
 require("./app/routes/master_place.routes")(app);
+require("./app/routes/mastervaksin.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
