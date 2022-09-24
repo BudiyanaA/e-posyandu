@@ -1,8 +1,8 @@
 const db = require("../models");
-const Masterplace = db.masterplaces;
+const Mastereducation = db.mastereducations;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Masterplace
+// Create and Save a new Mastereducation
 exports.create = (req, res) => {
    // Validate request
    if (!req.body.name) {
@@ -12,125 +12,125 @@ exports.create = (req, res) => {
     return;
   }
 
-   // Create a Masterplace
-   const masterplace = {
+   // Create a Mastereducation
+   const mastereducation = {
     name: req.body.name,
   };
 
-  // Save Masterplace in the database
-  Masterplace.create(masterplace)
+  // Save Mastereducation in the database
+  Mastereducation.create(masterplace)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Masterplace."
+          err.message || "Some error occurred while creating the Mastereducation."
       });
     });
 };
 
-// Retrieve all Masterplace from the database.
+// Retrieve all Mastereducation from the database.
 exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
   
-    Masterplace.findAll({ where: condition })
+    Mastereducation.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving Masterplace."
+            err.message || "Some error occurred while retrieving Mastereducation."
         });
       });
 };
 
-// Find a single Masterplace with an id
+// Find a single Mastereducation with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Masterplace.findByPk(id)
+    Mastereducation.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Masterplace with id=${id}.`
+            message: `Cannot find Mastereducation with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Masterplace with id=" + id
+          message: "Error retrieving Mastereducation with id=" + id
         });
       });
 };
 
-// Update a Masterplace by the id in the request
+// Update a Mastereducation by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Masterplace.update(req.body, {
+    Mastereducation.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Masterplace was updated successfully."
+            message: "Mastereducation was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Masterplace with id=${id}. Maybe Masterplace was not found or req.body is empty!`
+            message: `Cannot update Mastereducation with id=${id}. Maybe Mastereducation was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Masterplace with id=" + id
+          message: "Error updating Mastereducation with id=" + id
         });
       });
 };
 
-// Delete a Masterplace with the specified id in the request
+// Delete a Mastereducation with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Masterplace.destroy({
+    Mastereducation.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Masterplace was deleted successfully!"
+            message: "Mastereducation was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Masterplace with id=${id}. Maybe Masterplace was not found!`
+            message: `Cannot delete Mastereducation with id=${id}. Maybe Mastereducation was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Masterplace with id=" + id
+          message: "Could not delete Mastereducation with id=" + id
         });
       });
 };
 
-// Delete all Masterplace from the database.
+// Delete all Mastereducation from the database.
 exports.deleteAll = (req, res) => {
-  Masterplace.destroy({
+    Mastereducation.destroy({
         where: {},
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} Masterplace were deleted successfully!` });
+          res.send({ message: `${nums} Mastereducation were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all Masterplace."
+              err.message || "Some error occurred while removing all Mastereducation."
           });
         });
 };
