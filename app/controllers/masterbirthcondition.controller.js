@@ -1,8 +1,8 @@
 const db = require("../models");
-const Master_birth_condition = db.master_birth_conditions;
+const Masterbirthcondition = db.masterbirthconditions;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Posyandu
+// Create and Save a new Masterbirthcondition
 exports.create = (req, res) => {
    // Validate request
    if (!req.body.name) {
@@ -12,13 +12,13 @@ exports.create = (req, res) => {
     return;
   }
 
-   // Create a Posyandu
-   const master_birth_condition = {
+   // Create a Masterbirthcondition
+   const masterbirthcondition = {
     name: req.body.name
   };
 
-  // Save Posyandu in the database
-  Master_birth_condition.create(master_birth_condition)
+  // Save Masterbirthcondition in the database
+  Masterbirthcondition.create(masterbirthcondition)
     .then(data => {
       res.send(data);
     })
@@ -30,28 +30,28 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Posyandu from the database.
+// Retrieve all Masterbirthcondition from the database.
 exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
   
-    Master_birth_condition.findAll({ where: condition })
+    Masterbirthcondition.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving posyandus."
+            err.message || "Some error occurred while retrieving Masterbirthcondition."
         });
       });
 };
 
-// Find a single Posyandu with an id
+// Find a single Masterbirthcondition with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Master_birth_condition.findByPk(id)
+    Masterbirthcondition.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
@@ -68,11 +68,11 @@ exports.findOne = (req, res) => {
       });
 };
 
-// Update a Posyandu by the id in the request
+// Update a Masterbirthcondition by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Master_birth_condition.update(req.body, {
+    Masterbirthcondition.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -93,11 +93,11 @@ exports.update = (req, res) => {
       });
 };
 
-// Delete a Posyandu with the specified id in the request
+// Delete a Masterbirthcondition with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Master_birth_condition.destroy({
+    Masterbirthcondition.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -113,24 +113,24 @@ exports.delete = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Posyandu with id=" + id
+          message: "Could not delete Masterbirthcondition with id=" + id
         });
       });
 };
 
-// Delete all Posyandu from the database.
+// Delete all Masterbirthcondition from the database.
 exports.deleteAll = (req, res) => {
-    master_birth_condition.destroy({
+    masterbirthcondition.destroy({
         where: {},
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} Posyandus were deleted successfully!` });
+          res.send({ message: `${nums} Masterbirthcondition were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all Posyandus."
+              err.message || "Some error occurred while removing all Masterbirthcondition."
           });
         });
 };
