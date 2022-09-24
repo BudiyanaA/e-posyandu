@@ -30,6 +30,7 @@ db.mastervaksins = require("./mastervaksin.model.js")(sequelize, Sequelize);
 db.masterplaces= require("./masterplace.model.js")(sequelize, Sequelize);
 db.immunizations = require("./immunization.model.js")(sequelize, Sequelize);
 db.mastervilages = require("./mastervilage.model.js")(sequelize, Sequelize);
+db.masterreligions = require("./masterreligion.model.js")(sequelize, Sequelize);
 db.kms = require("./kms.model.js")(sequelize, Sequelize);
 
 
