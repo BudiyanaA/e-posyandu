@@ -1,5 +1,5 @@
 const db = require("../models");
-const Master_place = db.master_places;
+const Masterplace = db.masterplaces;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Posyandu
@@ -13,12 +13,12 @@ exports.create = (req, res) => {
   }
 
    // Create a Posyandu
-   const master_place = {
+   const masterplace = {
     name: req.body.name,
   };
 
   // Save Posyandu in the database
-  Master_place.create(master_place)
+  Masterplace.create(masterplace)
     .then(data => {
       res.send(data);
     })
@@ -35,7 +35,7 @@ exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
   
-    Master_place.findAll({ where: condition })
+    Masterplace.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Master_place.findByPk(id)
+    Masterplace.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
@@ -72,7 +72,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Master_place.update(req.body, {
+    Masterplace.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -97,7 +97,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Master_place.destroy({
+    Masterplace.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -120,7 +120,7 @@ exports.delete = (req, res) => {
 
 // Delete all Posyandu from the database.
 exports.deleteAll = (req, res) => {
-    Master_place.destroy({
+  Masterplace.destroy({
         where: {},
         truncate: false
       })

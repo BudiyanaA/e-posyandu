@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/posyandu.routes")(app);
 require("./app/routes/masterbirthconditions.routes")(app);
-require("./app/routes/master_place.routes")(app);
+require("./app/routes/masterplace.routes")(app);
 require("./app/routes/mastervaksin.routes")(app);
 require("./app/routes/mastervilage.routes")(app);
 
