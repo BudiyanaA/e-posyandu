@@ -29,6 +29,7 @@ db.master_birth_conditions = require("./master_birth_condition.model.js")(sequel
 db.mastervaksins = require("./mastervaksin.model.js")(sequelize, Sequelize);
 db.master_places= require("./master_place.model.js")(sequelize, Sequelize);
 db.immunizations = require("./immunization.model.js")(sequelize, Sequelize);
+db.mastervilages = require("./mastervilage.model.js")(sequelize, Sequelize);
 db.kms = require("./kms.model.js")(sequelize, Sequelize);
 
 
