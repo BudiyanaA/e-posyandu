@@ -9,7 +9,12 @@ module.exports = (sequelize, Sequelize) => {
       name: {
         type: Sequelize.STRING
       }
-    });
+    },
+    { 
+      underscored: true, 
+      timestamps: true,
+      paranoid: true, 
+     });
   
     return Mastervaksin;
   };

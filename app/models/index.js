@@ -33,6 +33,7 @@ db.mastervilages = require("./mastervilage.model.js")(sequelize, Sequelize);
 db.masterreligions = require("./masterreligion.model.js")(sequelize, Sequelize);
 db.kms = require("./kms.model.js")(sequelize, Sequelize);
 
+// db.moms.belongsTo(db.users, {foreignKey: "user_id", as:'user'});
 
 
 module.exports = db;

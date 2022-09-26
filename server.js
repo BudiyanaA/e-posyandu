@@ -37,6 +37,8 @@ require("./app/routes/mastervaksin.routes")(app);
 require("./app/routes/mastervilage.routes")(app);
 require("./app/routes/masterreligion.routes")(app);
 require("./app/routes/mastereducation.routes")(app);
+require("./app/routes/mastereducation.routes")(app);
+require("./app/routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
