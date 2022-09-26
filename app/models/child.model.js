@@ -40,8 +40,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       }
 
-    }
-    ,
+    },
     { 
       underscored: true, 
       timestamps: true,
