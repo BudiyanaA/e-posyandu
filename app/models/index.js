@@ -36,6 +36,7 @@ db.kms = require("./kms.model.js")(sequelize, Sequelize);
 db.moms.belongsTo(db.masterreligions, {foreignKey: "religion_id ", as:'master_religion'});
 db.moms.belongsTo(db.mastereducations, {foreignKey: "education_id  ", as:'master_education'});
 db.moms.belongsTo(db.users, {foreignKey: "user_id   ", as:'user'});
-
-
+db.dads.belongsTo(db.masterreligions, {foreignKey: "religion_id ", as:'master_religion'});
+db.dads.belongsTo(db.mastereducations, {foreignKey: "education_id  ", as:'master_education'});
+db.dads.belongsTo(db.moms, {foreignKey: "mom_id   ", as:'mom'});
 module.exports = db;
