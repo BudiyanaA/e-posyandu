@@ -16,7 +16,7 @@ exports.create = (req, res) => {
    const posyandu = {
     name: req.body.name,
     rw: req.body.rw,
-    village_id: req.body.village_id ? req.body.village_id : false
+    village_id: req.body.village_id
   };
 
   // Save Posyandu in the database

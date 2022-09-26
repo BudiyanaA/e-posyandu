@@ -43,6 +43,7 @@ require("./app/routes/mom.routes")(app);
 require("./app/routes/dad.routes")(app);
 require("./app/routes/child.routes")(app);
 require("./app/routes/birthrecord.routes")(app);
+require("./app/routes/kms.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

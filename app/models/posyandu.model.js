@@ -1,5 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
     const Posyandu = sequelize.define("posyandu", {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true    
+      },
       name: {
         type: Sequelize.STRING
       },
@@ -9,7 +15,12 @@ module.exports = (sequelize, Sequelize) => {
       village_id: {
         type: Sequelize.BOOLEAN
       }
-    });
+    },
+    { 
+      underscored: true, 
+      timestamps: true,
+      paranoid: true, 
+     });
   
     return Posyandu;
   };
