@@ -1,8 +1,8 @@
 const db = require("../models");
-const Mastereducation = db.mastereducations;
+const Mom = db.moms;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Mastereducation
+// Create and Save a new Mom
 exports.create = (req, res) => {
    // Validate request
    if (!req.body.name) {
@@ -12,132 +12,147 @@ exports.create = (req, res) => {
     return;
   }
 
-   // Create a Mastereducation
-   const mastereducation = {
+   // Create a Mom
+   const mom = {
     name: req.body.name,
+    nik: req.body.nik,
+    address: req.body.address,
+    city: req.body.city,
+    districts: req.body.districts,
+    birth_place: req.body.birth_place,
+    birth_date: req.body.birth_date,
+    religion_id: req.body.religion_id, 
+    education_id: req.body.education_id,
+    blood_type: req.body.blood_type,
+    profession: req.body.profession,
+    insurance_number: req.body.insurance_number,
+    user_id: req.body.user_id
+
   };
 
-  // Save Mastereducation in the database
-  Mastereducation.create(mastereducation)
+  // Save Mom in the database
+  Mom.create(mom)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Mastereducation."
+          err.message || "Some error occurred while creating the Mom."
       });
     });
 };
 
-// Retrieve all Mastereducation from the database.
+// Retrieve all Mom from the database.
 exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
+   
+
   
-    Mastereducation.findAll({ where: condition })
+    Mom.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving Mastereducation."
+            err.message || "Some error occurred while retrieving Moms."
         });
       });
 };
 
-// Find a single Mastereducation with an id
+// Find a single Mom with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Mastereducation.findByPk(id)
+    Mom.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
         } else {
           res.status(404).send({
-            message: `Cannot find Mastereducation with id=${id}.`
+            message: `Cannot find Mom with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Mastereducation with id=" + id
+          message: "Error retrieving Mom with id=" + id
         });
       });
 };
 
-// Update a Mastereducation by the id in the request
+// Update a Mom by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Mastereducation.update(req.body, {
+    Mom.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Mastereducation was updated successfully."
+            message: "Mom was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Mastereducation with id=${id}. Maybe Mastereducation was not found or req.body is empty!`
+            message: `Cannot update Mom with id=${id}. Maybe Mom was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Mastereducation with id=" + id
+          message: "Error updating Mom with id=" + id
         });
       });
 };
 
-// Delete a Mastereducation with the specified id in the request
+// Delete a Mom with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Mastereducation.destroy({
+    Mom.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Mastereducation was deleted successfully!"
+            message: "Mom was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Mastereducation with id=${id}. Maybe Mastereducation was not found!`
+            message: `Cannot delete Mom with id=${id}. Maybe Mom was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Mastereducation with id=" + id
+          message: "Could not delete Mom with id=" + id
         });
       });
 };
 
-// Delete all Mastereducation from the database.
+// Delete all Mom from the database.
 exports.deleteAll = (req, res) => {
-    Mastereducation.destroy({
+    Mom.destroy({
         where: {},
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} Mastereducation were deleted successfully!` });
+          res.send({ message: `${nums} Mom were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all Mastereducation."
+              err.message || "Some error occurred while removing all Mom."
           });
         });
 };
 
 // Find all published Posyandus
 // exports.findAllPublished = (req, res) => {
-//     Master_place.findAll({ where: { published: true } })
+//     Posyandu.findAll({ where: { published: true } })
 //     .then(data => {
 //       res.send(data);
 //     })

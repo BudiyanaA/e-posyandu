@@ -31,9 +31,11 @@ db.masterplaces= require("./masterplace.model.js")(sequelize, Sequelize);
 db.immunizations = require("./immunization.model.js")(sequelize, Sequelize);
 db.mastervilages = require("./mastervilage.model.js")(sequelize, Sequelize);
 db.masterreligions = require("./masterreligion.model.js")(sequelize, Sequelize);
+db.mastereducations = require("./mastereducation.model.js")(sequelize, Sequelize);
 db.kms = require("./kms.model.js")(sequelize, Sequelize);
-
-// db.moms.belongsTo(db.users, {foreignKey: "user_id", as:'user'});
+db.moms.belongsTo(db.masterreligions, {foreignKey: "religion_id ", as:'master_religion'});
+db.moms.belongsTo(db.mastereducations, {foreignKey: "education_id  ", as:'master_education'});
+db.moms.belongsTo(db.users, {foreignKey: "user_id   ", as:'user'});
 
 
 module.exports = db;

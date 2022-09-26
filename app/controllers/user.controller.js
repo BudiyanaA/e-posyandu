@@ -36,11 +36,6 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     const phone = req.query.phone;
     var condition = phone ? { phone: { [Op.iLike]: `%${phone}%` } } : null
-    const nik = req.query.nik;
-    var condition = nik ? { nik: { [Op.iLike]: `%${nik}%` } } : null
-    const role = req.query.role;
-    var condition = role ? { role: { [Op.iLike]: `%${role}%` } } : null
-
   
     User.findAll({ where: condition })
       .then(data => {
