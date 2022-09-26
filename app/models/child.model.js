@@ -1,5 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
     const Child = sequelize.define("child", {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true    
+      },
       name: {
         type: Sequelize.STRING
       },
@@ -7,13 +13,13 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       pregnancy_to: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       birth_place: {
         type: Sequelize.STRING
       },
       birth_date: {
-        type: Sequelize.STRING
+        type: Sequelize.DATEONLY
       },
       birth_certificate_number: {
         type: Sequelize.STRING
@@ -22,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       gender : {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM('M','F')
       },
       mom_id: {
         type: Sequelize.STRING
@@ -34,7 +40,13 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       }
 
-    });
+    }
+    ,
+    { 
+      underscored: true, 
+      timestamps: true,
+      paranoid: true, 
+     });
   
     return Child;
   };

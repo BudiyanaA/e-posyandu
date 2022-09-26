@@ -39,4 +39,6 @@ db.moms.belongsTo(db.users, {foreignKey: "user_id   ", as:'user'});
 db.dads.belongsTo(db.masterreligions, {foreignKey: "religion_id ", as:'master_religion'});
 db.dads.belongsTo(db.mastereducations, {foreignKey: "education_id  ", as:'master_education'});
 db.dads.belongsTo(db.moms, {foreignKey: "mom_id   ", as:'mom'});
+db.childs.belongsTo(db.birth_records, {foreignKey: "birth_record_id ", as:'birth_record'});
+db.childs.belongsTo(db.posyandus, {foreignKey: "posyandu_id ", as:'posyandu'});
 module.exports = db;

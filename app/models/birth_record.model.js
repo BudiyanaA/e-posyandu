@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Birth_record = sequelize.define("birth record", {
+    const Birth_record = sequelize.define("birth_record", {
       weight: {
         type: Sequelize.STRING
       },
