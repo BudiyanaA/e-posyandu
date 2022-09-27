@@ -43,4 +43,5 @@ db.childs.belongsTo(db.birthrecords, {foreignKey: "birth_record_id ", as:'birth_
 db.childs.belongsTo(db.posyandus, {foreignKey: "posyandu_id ", as:'posyandu'});
 db.birthrecords.belongsTo(db.masterplaces, {foreignKey: "place_id ", as:'master_place'});
 db.birthrecords.belongsTo(db.moms, {foreignKey: "mom_id ", as:'mom'});
+db.kmss.belongsTo(db.mastervilages, {foreignKey: "vilage_id ", as:'master_vilage'});
 module.exports = db;
