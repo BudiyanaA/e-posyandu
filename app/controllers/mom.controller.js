@@ -16,6 +16,8 @@ exports.create = (req, res) => {
    const mom = {
     name: req.body.name,
     nik: req.body.nik,
+    rt: req.body.rt,
+    rw: req.body.rw,
     address: req.body.address,
     city: req.body.city,
     districts: req.body.districts,

@@ -12,6 +12,12 @@ module.exports = (sequelize, Sequelize) => {
       nik: {
         type: Sequelize.STRING
       },
+      rt: {
+        type: Sequelize.INTEGER
+      },
+      rw: {
+        type: Sequelize.INTEGER
+      },
       address: {
         type: Sequelize.STRING
       },
