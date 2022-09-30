@@ -12,8 +12,8 @@ module.exports = (sequelize, Sequelize) => {
       weight: {
         type: Sequelize.DECIMAL
       },
-      age : {
-        type: Sequelize.INTEGER
+      height: {
+        type: Sequelize.DECIMAL
       },
       child_id : {
         type: Sequelize.STRING

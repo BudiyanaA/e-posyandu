@@ -16,7 +16,7 @@ exports.create = (req, res) => {
    const kms = {
     date: req.body.date,
     weight: req.body.weight,
-    age: req.body.age,
+    height: req.body.height,
     child_id: req.body.child_id
   };
 
