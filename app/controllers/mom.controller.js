@@ -28,7 +28,6 @@ exports.create = (req, res) => {
     blood_type: req.body.blood_type,
     profession: req.body.profession,
     insurance_number: req.body.insurance_number,
-    user_id: req.body.user_id
 
   };
 

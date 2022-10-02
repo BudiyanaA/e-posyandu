@@ -48,9 +48,6 @@ module.exports = (sequelize, Sequelize) => {
       insurance_number: {
         type: Sequelize.STRING
       },
-      user_id: {
-        type: Sequelize.STRING
-      }
     },
     { 
       underscored: true, 
