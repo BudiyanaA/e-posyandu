@@ -24,8 +24,9 @@ exports.create = (req, res) => {
     gender: req.body.gender,
     mom_id: req.body.mom_id,
     birth_record_id: req.body.birth_record_id,
-    posyandu_id: req.body.posyandu_id
-
+    posyandu_id: req.body.posyandu_id,
+    dad_id: req.body.dad_id,
+    user_id: req.body.user_id,
   };
 
   // Save Child in the database
