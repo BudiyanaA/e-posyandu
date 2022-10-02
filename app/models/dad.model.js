@@ -30,9 +30,6 @@ module.exports = (sequelize, Sequelize) => {
       profession: {
         type: Sequelize.STRING
       },
-      mom_id: {
-        type: Sequelize.STRING
-      },
     },
     { 
       underscored: true, 
