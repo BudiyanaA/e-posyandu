@@ -15,9 +15,9 @@ module.exports = (sequelize, Sequelize) => {
       height: {
         type: Sequelize.DECIMAL
       },
-      child_id : {
-        type: Sequelize.STRING
-      },
+      // child_id : {
+      //   type: Sequelize.STRING
+      // },
     },
     { 
       underscored: true, 

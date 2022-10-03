@@ -49,6 +49,7 @@ require("./app/routes/antropometristandard.routes")(app);
 require("./app/routes/kms.routes")(app);
 require("./app/routes/auth.routes")(app);
 require("./app/routes/masterpuskesmas.routes")(app);
+require("./app/routes/childnutrition.routes")(app);
 
 function initial() {
   Role.create({

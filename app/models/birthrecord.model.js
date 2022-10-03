@@ -21,12 +21,12 @@ module.exports = (sequelize, Sequelize) => {
       gender: {
         type: Sequelize.ENUM('M','F')
       },
-      place_id: {
-        type: Sequelize.STRING
-      },
-      mom_id: {
-        type: Sequelize.STRING
-      },
+      // place_id: {
+      //   type: Sequelize.STRING
+      // },
+      // mom_id: {
+      //   type: Sequelize.STRING
+      // },
     },
     { 
       underscored: true, 

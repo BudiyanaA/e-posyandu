@@ -27,18 +27,18 @@ module.exports = (sequelize, Sequelize) => {
       insurance_number: {
         type: Sequelize.STRING
       },
-      gender : {
+      gender: {
         type: Sequelize.ENUM('M','F')
       },
-      mom_id: {
-        type: Sequelize.STRING
-      },
-      birth_record_id: {
-        type: Sequelize.STRING
-      },
-      posyandu_id: {
-        type: Sequelize.STRING
-      },
+      // mom_id: {
+      //   type: Sequelize.STRING
+      // },
+      // birth_record_id: {
+      //   type: Sequelize.STRING
+      // },
+      // posyandu_id: {
+      //   type: Sequelize.STRING
+      // },
       dad_id: {
         type: Sequelize.STRING
       },

@@ -18,12 +18,12 @@ module.exports = (sequelize, Sequelize) => {
       birth_place: {
         type: Sequelize.STRING
       },
-      religion_id: {
-        type: Sequelize.STRING
-      },
-      education_id: {
-        type: Sequelize.STRING
-      },
+      // religion_id: {
+      //   type: Sequelize.STRING
+      // },
+      // education_id: {
+      //   type: Sequelize.STRING
+      // },
       blood_type: {
         type: Sequelize.ENUM('A','B','O','AB')
       },
