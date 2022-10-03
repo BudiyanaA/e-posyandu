@@ -11,9 +11,11 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 const db = require("./app/models");
+const Role = db.roles;
 db.sequelize.sync({ force: true })
   .then(() => {
     console.log(" Drop and re-sync db.");
+    initial();
   })
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
@@ -44,7 +46,25 @@ require("./app/routes/dad.routes")(app);
 require("./app/routes/child.routes")(app);
 require("./app/routes/birthrecord.routes")(app);
 require("./app/routes/kms.routes")(app);
+require("./app/routes/auth.routes")(app);
+require("./app/routes/masterpuskesmas.routes")(app);
 
+function initial() {
+  Role.create({
+    id: 1,
+    name: "user"
+  });
+ 
+  Role.create({
+    id: 2,
+    name: "moderator"
+  });
+ 
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+}
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

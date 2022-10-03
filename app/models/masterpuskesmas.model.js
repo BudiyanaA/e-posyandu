@@ -1,19 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("users", {
+    const Masterpuskesmas = sequelize.define("master_puskesmas", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
         primaryKey: true    
       },
-      phone: {
+      name: {
         type: Sequelize.STRING
-      },
-      nik: {
-        type: Sequelize.STRING
-      },
-      role: {
-        type: Sequelize. ENUM ('USER','INPUTTER','OBSERVER','ADMIN')
       }
     },
     { 
@@ -22,5 +16,5 @@ module.exports = (sequelize, Sequelize) => {
       paranoid: true, 
      });
   
-    return User;
+    return Masterpuskesmas;
   };

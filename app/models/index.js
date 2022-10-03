@@ -30,8 +30,10 @@ db.mastervaksins = require("./mastervaksin.model.js")(sequelize, Sequelize);
 db.masterplaces= require("./masterplace.model.js")(sequelize, Sequelize);
 db.immunizations = require("./immunization.model.js")(sequelize, Sequelize);
 db.mastervilages = require("./mastervilage.model.js")(sequelize, Sequelize);
+db.roles = require("./role.model.js")(sequelize, Sequelize);
 db.masterreligions = require("./masterreligion.model.js")(sequelize, Sequelize);
 db.mastereducations = require("./mastereducation.model.js")(sequelize, Sequelize);
+db.masterpuskesmas = require("./masterpuskesmas.model.js")(sequelize, Sequelize);
 db.kmss = require("./kms.model.js")(sequelize, Sequelize);
 db.moms.belongsTo(db.masterreligions, {foreignKey: "religion_id ", as:'master_religion'});
 db.moms.belongsTo(db.mastereducations, {foreignKey: "education_id  ", as:'master_education'});
@@ -44,4 +46,17 @@ db.childs.belongsTo(db.posyandus, {foreignKey: "posyandu_id ", as:'posyandu'});
 db.birthrecords.belongsTo(db.masterplaces, {foreignKey: "place_id ", as:'master_place'});
 db.birthrecords.belongsTo(db.moms, {foreignKey: "mom_id ", as:'mom'});
 db.kmss.belongsTo(db.mastervilages, {foreignKey: "vilage_id ", as:'master_vilage'});
+db.posyandus.belongsTo(db.masterpuskesmas, {foreignKey: "puskesmas_id  ", as:'puskesmas'});
+db.roles.belongsToMany(db.users, {
+  through: "user_roles",
+  foreignKey: "roleId",
+  otherKey: "userId"
+});
+db.users.belongsToMany(db.roles, {
+  through: "user_roles",
+  foreignKey: "userId",
+  otherKey: "roleId"
+});
+
+db.ROLES = ['USER','INPUTTER','OBSERVER','ADMIN'];
 module.exports = db;
