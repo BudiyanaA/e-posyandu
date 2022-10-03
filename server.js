@@ -45,6 +45,7 @@ require("./app/routes/mom.routes")(app);
 require("./app/routes/dad.routes")(app);
 require("./app/routes/child.routes")(app);
 require("./app/routes/birthrecord.routes")(app);
+require("./app/routes/antropometristandard.routes")(app);
 require("./app/routes/kms.routes")(app);
 require("./app/routes/auth.routes")(app);
 require("./app/routes/masterpuskesmas.routes")(app);

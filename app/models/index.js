@@ -34,6 +34,7 @@ db.roles = require("./role.model.js")(sequelize, Sequelize);
 db.masterreligions = require("./masterreligion.model.js")(sequelize, Sequelize);
 db.mastereducations = require("./mastereducation.model.js")(sequelize, Sequelize);
 db.masterpuskesmas = require("./masterpuskesmas.model.js")(sequelize, Sequelize);
+db.antropometristandards= require("./antropometristandard.model.js")(sequelize, Sequelize);
 db.kmss = require("./kms.model.js")(sequelize, Sequelize);
 db.moms.belongsTo(db.masterreligions, {foreignKey: "religion_id ", as:'master_religion'});
 db.moms.belongsTo(db.mastereducations, {foreignKey: "education_id  ", as:'master_education'});
