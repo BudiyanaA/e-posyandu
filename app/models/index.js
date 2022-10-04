@@ -46,6 +46,7 @@ db.dads.belongsTo(db.moms, {foreignKey: "mom_id", as:'mom'});
 db.childs.belongsTo(db.birthrecords, {foreignKey: "birth_record_id", as:'birth_record'});
 db.childs.belongsTo(db.posyandus, {foreignKey: "posyandu_id", as:'posyandu'});
 db.childs.belongsTo(db.moms, {foreignKey: "mom_id", as:'mom'});
+db.childs.belongsTo(db.dads, {foreignKey: "dad_id", as:'dad'});
 db.birthrecords.belongsTo(db.masterplaces, {foreignKey: "place_id", as:'master_place'});
 db.birthrecords.belongsTo(db.moms, {foreignKey: "mom_id", as:'mom'});
 db.kmss.belongsTo(db.childs, {foreignKey: "child_id", as:'child'});

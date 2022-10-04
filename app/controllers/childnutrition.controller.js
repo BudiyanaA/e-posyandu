@@ -3,6 +3,7 @@ const Kms = db.kmss;
 const Op = db.Sequelize.Op;
 const Child=db.childs;
 const Mom = db.moms;
+const Dad = db.dads;
 // Retrieve all Kms from the database.
 exports.findAll = (req, res) => {
     const date = req.query.date;
@@ -10,10 +11,16 @@ exports.findAll = (req, res) => {
 
     Kms.findAll({ where: condition,include: [{
         model: Child,
-        as: 'child',include: [{
+        as: 'child',include: [
+          {
           model:Mom,
           as:'mom'
-        }]
+         },
+         {
+          model:Dad,
+          as:'dad'
+         },
+        ]
     }]})
       .then(data => {
         res.send(data);

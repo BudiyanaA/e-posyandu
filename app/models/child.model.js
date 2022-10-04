@@ -39,9 +39,9 @@ module.exports = (sequelize, Sequelize) => {
       // posyandu_id: {
       //   type: Sequelize.STRING
       // },
-      dad_id: {
-        type: Sequelize.STRING
-      },
+      // dad_id: {
+      //   type: Sequelize.STRING
+      // },
       user_id: {
         type: Sequelize.STRING
       }
