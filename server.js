@@ -12,10 +12,10 @@ app.use(cors(corsOptions));
 
 const db = require("./app/models");
 const Role = db.roles;
-db.sequelize.sync({ force: false })
+db.sequelize.sync({ force: true })
   .then(() => {
     console.log(" Drop and re-sync db.");
-    // initial();
+    initial();
   })
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);

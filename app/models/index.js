@@ -50,7 +50,8 @@ db.childs.belongsTo(db.dads, {foreignKey: "dad_id", as:'dad'});
 db.birthrecords.belongsTo(db.masterplaces, {foreignKey: "place_id", as:'master_place'});
 db.birthrecords.belongsTo(db.moms, {foreignKey: "mom_id", as:'mom'});
 db.kmss.belongsTo(db.childs, {foreignKey: "child_id", as:'child'});
-db.posyandus.belongsTo(db.masterpuskesmas, {foreignKey: "puskesmas_id", as:'puskesmas'});
+db.posyandus.belongsTo(db.masterpuskesmas, {foreignKey: "puskesmas_id", as:'master_puskesmas'});
+db.posyandus.belongsTo(db.mastervilages, {foreignKey: "village_id", as:'master_village'});
 db.roles.belongsToMany(db.users, {
   through: "user_roles",
   foreignKey: "roleId",

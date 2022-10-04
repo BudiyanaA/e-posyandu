@@ -12,9 +12,9 @@ module.exports = (sequelize, Sequelize) => {
       rw: {
         type: Sequelize.STRING
       },
-      village_id: {
-        type: Sequelize.BOOLEAN
-      }
+      // village_id: {
+      //   type: Sequelize.STRING
+      // }
     },
     { 
       underscored: true, 

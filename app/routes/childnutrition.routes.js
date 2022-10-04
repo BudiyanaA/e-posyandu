@@ -6,5 +6,7 @@ module.exports = app => {
     // Retrieve all Posyandus
     router.get("/", kmss.findAll);
   
+    router.get("/:id", kmss.findOne);
+    
     app.use('/api/child_nutrition', router);
   };
