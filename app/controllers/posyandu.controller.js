@@ -1,6 +1,7 @@
 const db = require("../models");
 const Posyandu = db.posyandus;
 const Op = db.Sequelize.Op;
+const Mastervilage= db.mastervilages;
 
 // Create and Save a new Posyandu
 exports.create = (req, res) => {
@@ -38,7 +39,12 @@ exports.findAll = (req, res) => {
     const name = req.query.name;
     var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
   
-    Posyandu.findAll({ where: condition })
+    Posyandu.findAll({ where: condition,include: [
+      {
+      model:Mastervilage,
+      as: 'master_village'
+    }
+  ] })
       .then(data => {
         res.send(data);
       })
@@ -54,7 +60,12 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Posyandu.findByPk(id)
+    Posyandu.findByPk(id,{include: [
+      {
+      model:Mastervilage,
+      as: 'master_village'
+    }
+  ]})
       .then(data => {
         if (data) {
           res.send(data);

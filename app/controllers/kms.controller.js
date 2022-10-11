@@ -1,6 +1,7 @@
 const db = require("../models");
 const Kms = db.kmss;
 const Op = db.Sequelize.Op;
+const Child= db.childs;
 
 // Create and Save a new Kms
 exports.create = (req, res) => {
@@ -38,7 +39,12 @@ exports.findAll = (req, res) => {
     const date = req.query.date;
     var condition = date ? { date: { [Op.iLike]: `%${date}%` } } : null
   
-    Kms.findAll({ where: condition })
+    Kms.findAll({ where: condition,include: [
+      {
+      model:Child,
+      as: 'child'
+    }
+  ] })
       .then(data => {
         res.send(data);
       })
@@ -54,7 +60,12 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Kms.findByPk(id)
+    Kms.findByPk(id,{include: [
+      {
+      model:Child,
+      as: 'child'
+    }
+  ]})
       .then(data => {
         if (data) {
           res.send(data);

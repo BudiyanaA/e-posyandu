@@ -1,6 +1,8 @@
 const db = require("../models");
 const Dad = db.dads;
 const Op = db.Sequelize.Op;
+const Masterreligion= db.masterreligions;
+const Mastereducation= db.mastereducations;
 
 // Create and Save a new Dad
 exports.create = (req, res) => {
@@ -45,7 +47,16 @@ exports.findAll = (req, res) => {
    
 
   
-    Dad.findAll({ where: condition })
+    Dad.findAll({ where: condition,include: [
+      {
+      model:Masterreligion,
+      as: 'master_religion'
+    },
+    {
+      model:Mastereducation,
+      as: 'master_education'
+    }
+  ] })
       .then(data => {
         res.send(data);
       })
@@ -61,7 +72,16 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Dad.findByPk(id)
+    Dad.findByPk(id,{include: [
+      {
+      model:Masterreligion,
+      as: 'master_religion'
+    },
+    {
+      model:Mastereducation,
+      as: 'master_education'
+    }
+  ]})
       .then(data => {
         if (data) {
           res.send(data);
