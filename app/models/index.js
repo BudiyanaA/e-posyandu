@@ -29,7 +29,6 @@ db.birthrecords = require("./birthrecord.model.js")(sequelize, Sequelize);
 db.masterbirthconditions = require("./masterbirthcondition.model.js")(sequelize, Sequelize);
 db.mastervaksins = require("./mastervaksin.model.js")(sequelize, Sequelize);
 db.masterplaces= require("./masterplace.model.js")(sequelize, Sequelize);
-db.immunizations = require("./immunization.model.js")(sequelize, Sequelize);
 db.mastervilages = require("./mastervilage.model.js")(sequelize, Sequelize);
 db.roles = require("./role.model.js")(sequelize, Sequelize);
 db.masterreligions = require("./masterreligion.model.js")(sequelize, Sequelize);
@@ -37,6 +36,7 @@ db.mastereducations = require("./mastereducation.model.js")(sequelize, Sequelize
 db.masterpuskesmas = require("./masterpuskesmas.model.js")(sequelize, Sequelize);
 db.antropometristandards= require("./antropometristandard.model.js")(sequelize, Sequelize);
 db.kmss = require("./kms.model.js")(sequelize, Sequelize);
+db.imunizations = require("./imunization.model.js")(sequelize, Sequelize);
 
 db.moms.belongsTo(db.masterreligions, {foreignKey: "religion_id", as:'master_religion'});
 db.moms.belongsTo(db.mastereducations, {foreignKey: "education_id", as:'master_education'});
@@ -53,6 +53,8 @@ db.birthrecords.belongsTo(db.moms, {foreignKey: "mom_id", as:'mom'});
 db.kmss.belongsTo(db.childs, {foreignKey: "child_id", as:'child'});
 db.posyandus.belongsTo(db.masterpuskesmas, {foreignKey: "puskesmas_id", as:'master_puskesmas'});
 db.posyandus.belongsTo(db.mastervilages, {foreignKey: "village_id", as:'master_village'});
+db.imunizations.belongsTo(db.mastervaksins, {foreignKey: "vaksin_id", as:'master_vaksin'});
+db.imunizations.belongsTo(db.childs, {foreignKey: "child_id", as:'child'});
 db.roles.belongsToMany(db.users, {
   through: "user_roles",
   foreignKey: "roleId",

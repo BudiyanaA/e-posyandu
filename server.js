@@ -50,6 +50,7 @@ require("./app/routes/kms.routes")(app);
 require("./app/routes/auth.routes")(app);
 require("./app/routes/masterpuskesmas.routes")(app);
 require("./app/routes/childnutrition.routes")(app);
+require("./app/routes/imunization.routes")(app);
 
 function initial() {
   Role.create({
